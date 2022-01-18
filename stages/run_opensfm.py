@@ -229,6 +229,10 @@ class ODMOpenSfMStage(types.ODM_Stage):
         # Skip dense reconstruction if necessary and export
         # sparse reconstruction instead
         if args.fast_orthophoto:
+            # Query points by track_id in target_image
+            from opendm.ldm.points import query_points
+            query_points(tree.opensfm_reconstruction, octx.path('tracks.csv'), tree.dataset_list, octx.path('reconstruction_org.json'))
+
             output_file = octx.path('reconstruction.ply')
 
             if not io.file_exists(output_file) or self.rerun():

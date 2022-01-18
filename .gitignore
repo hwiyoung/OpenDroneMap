@@ -27,3 +27,6 @@ settings.yaml
 .setupdevenv
 __pycache__
 *.snap
+
+# vs code
+.vscode/
